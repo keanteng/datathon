@@ -11,6 +11,8 @@ Livestocks statistics (chickens and eggs)
 **Related issue:**
 - Government continues to subsidy egg price but let chicken price to float according to market supply and demand. 
 
+---
+
 # Jobs & Social Protection
 Aim:
 - Analyzing job market data to identify trends and skill gaps and provide career guidance.
@@ -21,5 +23,5 @@ Company and Sectors:
 - https://powrbot.com/companies/list-of-companies-in-malaysia/ (Download with free account)
 - Employment related data on OpenDOSM
   
-Related issue:
+**Related issue:**
 - Imported labor force impact and whether they include in the national published statistics.
