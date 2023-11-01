@@ -6,6 +6,7 @@
 - [5. Jobs and Social Protection:](#5-jobs-and-social-protection)
 - [6. Climate Change, Biodiversity Loss, and Pollution:](#6-climate-change-biodiversity-loss-and-pollution)
 - [Call To Action](#call-to-action)
+- [Previous Winning Solution](#previous-winning-solution)
 
 
 # 1. Food Systems:
@@ -39,6 +40,16 @@
 - Carbon Footprint Tracking: Developing tools for individuals and organizations to track and reduce their carbon footprint.
 - Conservation Decision Support: Using data to make informed decisions about biodiversity conservation and habitat protection.
 
+---
+
 # Call To Action
 1. Focus areas are 1 and 5
 2. The study are need to include geospatial element
+
+# Previous Winning Solution
+1. Uganda household analysis using survey data from World Bank. Data contains socio-economic characteristic of household coping with the pandemic. Note that it is a survey dataset
+2. To understand household's vulnerability to Covid-19
+3. What is considered as vulnerability (poverty, hunger and education opportunity)
+4. Can Covid impact income source which then cause poverty? Can covid cause food insecurity to household? Can Covid cause household to not able to access quality education?
+5. Solution: Using classification model to predict the household data to identify income vulnerability of 4 classes; identify food security vulnerability on 4 classes; repeat for education again. Then we can combine these model and group the household again to see which class they will fall into.
+6. Impact: How to do it at scale? Give example and steps. What can we then improve on our current findings? Scaling/pipeline and so on.
