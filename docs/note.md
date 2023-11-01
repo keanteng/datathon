@@ -22,6 +22,9 @@ Company and Sectors:
 - https://en.wikipedia.org/wiki/List_of_companies_of_Malaysia
 - https://powrbot.com/companies/list-of-companies-in-malaysia/ (Download with free account)
 - Employment related data on OpenDOSM
+- https://www.ilmia.gov.my/index.php/en/bda-jmi
+- https://hrsea.economictimes.indiatimes.com/news/industry/decoding-malaysias-job-market-in-2023-roles-salary-trends-more/103962796#:~:text=Malaysia%27s%20labour%20market%20sustains%20upward%20trend&text=The%20overall%20number%20of%20employed,year%2C%20which%20were%208.62%20million.
+- https://www.ceicdata.com/en/malaysia/employment-and-unemployment
   
 **Related issue:**
 - Imported labor force impact and whether they include in the national published statistics.
