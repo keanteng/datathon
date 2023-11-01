@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <idinfo>
+    <citation>
+      <citeinfo>
+        <origin/>
+        <origin/>
+        <pubdate>20121106</pubdate>
+        <title>Districts, Malaysia, 2013</title>
+        <edition>2.1</edition>
+        <geoform>vector digital data</geoform>
+        <pubinfo>
+          <publish>International Steering Committee for Global Mapping</publish>
+        </pubinfo>
+        <onlink>http://purl.stanford.edu/zd362bc5680</onlink>
+        <lworkcit>
+          <citeinfo>
+            <title>Global Map</title>
+          </citeinfo>
+        </lworkcit>
+      </citeinfo>
+    </citation>
+    <descript>
+      <abstract>This polygon shapefile represents districts in Malaysia. The Global Map Malaysia version 2 is extracted from existing topographic map of scale 1:25 000.</abstract>
+      <purpose>Global Map data were developed under the cooperation of National Geospatial Information Authorities (NGIAs) of respective countries and regions.</purpose>
+      <supplinf>Global Map data of National/Regional version were developed with consistent specifications by NGIAs of respective countries and regions for fundamental geospatial information of their respective coverage by using geospatial information owned by them, and they were provided. The data have been authorized by NGIAs of respective countries and regions. Therefore, the contents of respective data are based on the views of respective data developers. For some countries and regions, there may be parts where data have not been developed. National/Regional version of Global Map data was to be updated in about five-year cycle on the basis of resolutions of an ISCGM meeting. To know about the year data were updated and about data developers, please refer to metadata attached to each data. Depending on the period the data were prepared, they were developed in line with two different specifications, namely, version 1 in VPF and BIL formats, and version 2 in GML and BIL formats.</supplinf>
+    </descript>
+    <timeperd>
+      <timeinfo>
+        <sngdate>
+          <caldate>20130422</caldate>
+        </sngdate>
+      </timeinfo>
+      <current>publication date</current>
+    </timeperd>
+    <status>
+      <progress>Complete</progress>
+      <update>Unknown</update>
+    </status>
+    <spdom>
+      <bounding>
+        <westbc>99.640610</westbc>
+        <eastbc>119.266977</eastbc>
+        <northbc>7.362766</northbc>
+        <southbc>0.853796</southbc>
+      </bounding>
+    </spdom>
+    <keywords>
+      <theme>
+        <themekt>lcsh</themekt>
+        <themekey>Administrative and political divisions</themekey>
+      </theme>
+      <theme>
+        <themekt>ISO 19115 Topic Categories</themekt>
+        <themekey>boundaries</themekey>
+      </theme>
+      <place>
+        <placekt>geonames</placekt>
+        <placekey>Malaysia</placekey>
+      </place>
+    </keywords>
+    <accconst>For non-commercial use, in principle, anyone can use the data free of charge. As the data of National/Regional version were developed by NGIAs of respective countries and regions, and there may be parts which have not been developed depending on countries and regions. In using the data, please check respective data policies because different countries and regions have different data policies.</accconst>
+    <useconst>None</useconst>
+    <ptcontac>
+      <cntinfo>
+        <cntorgp>
+          <cntorg>Malaysia. Jabatan Ukur dan Pemetaan</cntorg>
+        </cntorgp>
+        <cntemail>webmaster@jupem.gov.my</cntemail>
+      </cntinfo>
+    </ptcontac>
+    <datacred>Global Map of Malaysia ©ISCGM/ The Department of Survey and Mapping Malaysia</datacred>
+    <native> Version 6.2 (Build 9200) ; Esri ArcGIS 10.4.1.5686</native>
+  </idinfo>
+  <spdoinfo>
+    <direct>Vector</direct>
+    <ptvctinf>
+      <sdtsterm>
+        <sdtstype>GT-polygon composed of chains</sdtstype>
+        <ptvctcnt>236</ptvctcnt>
+      </sdtsterm>
+    </ptvctinf>
+  </spdoinfo>
+  <eainfo>
+    <detailed>
+      <enttyp>
+        <enttypl>polbnda_mys</enttypl>
+      </enttyp>
+      <attr>
+        <attrlabl>FID</attrlabl>
+        <attrdef>Internal feature number.</attrdef>
+        <attrdefs>Esri</attrdefs>
+        <attrdomv>
+          <udom>Sequential unique whole numbers that are automatically generated.</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>Shape</attrlabl>
+        <attrdef>Feature geometry.</attrdef>
+        <attrdefs>Esri</attrdefs>
+        <attrdomv>
+          <udom>Coordinates defining the features.</udom>
+        </attrdomv>
+      </attr>
+      <attr>
+        <attrlabl>f_code</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>coc</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>nam</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>laa</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>pop</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>ypc</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>adm_code</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>salb</attrlabl>
+      </attr>
+      <attr>
+        <attrlabl>soc</attrlabl>
+      </attr>
+    </detailed>
+  </eainfo>
+  <distinfo>
+    <distrib>
+      <cntinfo>
+        <cntorgp>
+          <cntorg>Stanford Geospatial Center</cntorg>
+        </cntorgp>
+        <cntaddr>
+          <addrtype>physical</addrtype>
+          <address>Branner Earth Sciences Library</address>
+          <address>Mitchell Building, 2nd Floor</address>
+          <address>397 Panama Mall</address>
+          <city>Stanford</city>
+          <state>California</state>
+          <postal>94305</postal>
+          <country>US</country>
+        </cntaddr>
+        <cntvoice>650-723-2746</cntvoice>
+        <cntemail>brannerlibrary@stanford.edu</cntemail>
+      </cntinfo>
+    </distrib>
+    <distliab>See access and use constraints information.</distliab>
+  </distinfo>
+  <metainfo>
+    <metd>20180525</metd>
+    <metc>
+      <cntinfo>
+        <cntorgp>
+          <cntorg>Stanford Geospatial Center</cntorg>
+        </cntorgp>
+        <cntaddr>
+          <addrtype>physical</addrtype>
+          <address>Branner Earth Sciences Library</address>
+          <address>Mitchell Building, 2nd Floor</address>
+          <address>397 Panama Mall</address>
+          <city>Stanford</city>
+          <state>California</state>
+          <postal>94305</postal>
+          <country>US</country>
+        </cntaddr>
+        <cntvoice>650-723-2746</cntvoice>
+        <cntemail>brannerlibrary@stanford.edu</cntemail>
+      </cntinfo>
+    </metc>
+    <metstdn>FGDC Content Standard for Digital Geospatial Metadata</metstdn>
+    <metstdv>FGDC-STD-001-1998</metstdv>
+    <mettc>local time</mettc>
+  </metainfo>
+</metadata>
