@@ -1,2 +1,6 @@
 pandas
 streamlit
+geopandas
+leafmap
+shapely
+geopy
