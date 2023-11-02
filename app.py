@@ -4,6 +4,7 @@ import numpy as np
 import streamlit as st
 import geopandas as gpd
 from backend.functions import *
+from backend.config import *
 
 # website settings
 # turn off the side bar by default
@@ -41,6 +42,7 @@ col1, col2 = st.columns(spec = [0.7, 0.3], gap = 'small')
 
 # load data
 df = gpd.read_file("data/shapefile/polbnda_mys.shp")
+jobdata = pd.read_csv('data/job_posting_clean.csv')
 
 if submit:
     with st.spinner():
@@ -67,3 +69,42 @@ if submit:
             )
             m.add_gdf(intersected_df, layer_name="Region of Interest", style=style)
             m.to_streamlit(height=700)
+        
+        with col2:
+            # configure the API
+            configure_api()
+            # get the skill list
+            skill_list = skill_suggest_model(location_input)
+            # get the job list
+            job_list = job_suggest_model(skill_list)
+            
+            # cleaning
+            skill_list = list_cleaning(skill_list)
+            job_list = list_cleaning(job_list)
+            
+            st.subheader("🧪 Skill List:")
+            st.write("Based on the location of interest, we suggest the following skills:" + " " + skill_list)
+            
+            st.divider()
+            
+            st.subheader("💼 Job List:")
+            st.write("Based on the skills, we suggest the following jobs:" + " " + job_list)
+            st.caption(":blue[Hiring companies are listed in the table below.]")
+            
+            # job recommendation engine
+            job_list = job_list.split(", ")
+            result_df = []
+            
+            for i in range(0, len(job_list)):
+                job_match = job_matcher(jobdata, column = 'title', string_to_match = str(job_list[i]))
+                
+                if job_match.empty:
+                    continue
+                else:
+                    job_key = job_match['title'][0]
+                    
+                    result = job_recom_engine(jobdata, job_key = job_key)
+                    result_df.append(result)
+                
+            result_df = pd.concat([df for df in result_df], ignore_index=True)
+            st.table(result_df)
