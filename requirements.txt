@@ -1,0 +1,11 @@
+pandas
+streamlit
+geopandas
+leafmap
+shapely
+geopy
+google-generativeai
+scipy
+sklearn
+re
+fuzzywuzzy

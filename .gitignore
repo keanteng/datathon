@@ -1,0 +1,8 @@
+# hide token
+palm.ipynb
+backend/config.py
+
+# remove large files
+# ref git reset --soft HEAD~1
+data/job_posting_cleaned.csv
+#data/job_posting_clean.csv
