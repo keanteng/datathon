@@ -1,0 +1,4 @@
+analysis/palm.ipynb
+data/job_posting_cleaned.csv
+data/job_postings.csv
+backend/config.py
