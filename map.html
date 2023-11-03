@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_4f4409182646facbb809b05f93f6217c {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_4f4409182646facbb809b05f93f6217c" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_4f4409182646facbb809b05f93f6217c = L.map(
+                "map_4f4409182646facbb809b05f93f6217c",
+                {
+                    center: [4.2105, 101.9758],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 6,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_5a02d3da834515f1b70d4fd9ab20256a = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca target=\"_blank\" href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\"_blank\" href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_4f4409182646facbb809b05f93f6217c);
+        
+    
+            var marker_28f963984a0d8a75d26571cf38a94087 = L.marker(
+                [1.4854, 103.7577],
+                {}
+            ).addTo(map_4f4409182646facbb809b05f93f6217c);
+        
+    
+            var icon_8ab6000c09a3b9ac8734f68b28cc78f1 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "cloud", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_28f963984a0d8a75d26571cf38a94087.setIcon(icon_8ab6000c09a3b9ac8734f68b28cc78f1);
+        
+    
+        var popup_3bd28f2ef03fa1c3c011ca69e4043d68 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c88271a924c78f47b52ea1c65992047b = $(`<div id="html_c88271a924c78f47b52ea1c65992047b" style="width: 100.0%; height: 100.0%;"><h4>0</h4><p>Job Growth: 2119</p><p>Vacancy Rates: 0.37677809388335703</p></div>`)[0];
+                popup_3bd28f2ef03fa1c3c011ca69e4043d68.setContent(html_c88271a924c78f47b52ea1c65992047b);
+            
+        
+
+        marker_28f963984a0d8a75d26571cf38a94087.bindPopup(popup_3bd28f2ef03fa1c3c011ca69e4043d68)
+        ;
+
+        
+    
+    
+            var marker_93c8af121ea66250345b6c0354fbabd4 = L.marker(
+                [6.1246, 100.3673],
+                {}
+            ).addTo(map_4f4409182646facbb809b05f93f6217c);
+        
+    
+            var icon_c02c6b525f1a757be4d2e0790f649c61 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "cloud", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_93c8af121ea66250345b6c0354fbabd4.setIcon(icon_c02c6b525f1a757be4d2e0790f649c61);
+        
+    
+        var popup_cc5b83ab4d227bc0110c88367e938408 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_67fce34884b39aeeffd711afdaa83def = $(`<div id="html_67fce34884b39aeeffd711afdaa83def" style="width: 100.0%; height: 100.0%;"><h4>1</h4><p>Job Growth: 881</p><p>Vacancy Rates: 1.3188622754491017</p></div>`)[0];
+                popup_cc5b83ab4d227bc0110c88367e938408.setContent(html_67fce34884b39aeeffd711afdaa83def);
+            
+        
+
+        marker_93c8af121ea66250345b6c0354fbabd4.bindPopup(popup_cc5b83ab4d227bc0110c88367e938408)
+        ;
+
+        
+    
+    
+            var marker_e3e57a529410f5d6f8273674025ee240 = L.marker(
+                [5.3364, 102.1746],
+                {}
+            ).addTo(map_4f4409182646facbb809b05f93f6217c);
+        
+    
+            var icon_e13733d62d98d2963ebb71f0eb987f4f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "cloud", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_e3e57a529410f5d6f8273674025ee240.setIcon(icon_e13733d62d98d2963ebb71f0eb987f4f);
+        
+    
+        var popup_6d4dab104ca4cfb83221903079b87225 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_beb4d72e367a978b2a03711951b9acdb = $(`<div id="html_beb4d72e367a978b2a03711951b9acdb" style="width: 100.0%; height: 100.0%;"><h4>2</h4><p>Job Growth: 64</p><p>Vacancy Rates: 0.191044776119403</p></div>`)[0];
+                popup_6d4dab104ca4cfb83221903079b87225.setContent(html_beb4d72e367a978b2a03711951b9acdb);
+            
+        
+
+        marker_e3e57a529410f5d6f8273674025ee240.bindPopup(popup_6d4dab104ca4cfb83221903079b87225)
+        ;
+
+        
+    
+    
+            var marker_13f1379623405258c6d70d42e55bda16 = L.marker(
+                [2.1966, 102.2483],
+                {}
+            ).addTo(map_4f4409182646facbb809b05f93f6217c);
+        
+    
+            var icon_c8704be3bace69ea0c604279b46d5a87 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "cloud", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_13f1379623405258c6d70d42e55bda16.setIcon(icon_c8704be3bace69ea0c604279b46d5a87);
+        
+    
+        var popup_9007c43de5572e0f1cb27448ac097739 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_4da71dacd13d28810d81b549aac068b7 = $(`<div id="html_4da71dacd13d28810d81b549aac068b7" style="width: 100.0%; height: 100.0%;"><h4>3</h4><p>Job Growth: 650</p><p>Vacancy Rates: 0.5706760316066726</p></div>`)[0];
+                popup_9007c43de5572e0f1cb27448ac097739.setContent(html_4da71dacd13d28810d81b549aac068b7);
+            
+        
+
+        marker_13f1379623405258c6d70d42e55bda16.bindPopup(popup_9007c43de5572e0f1cb27448ac097739)
+        ;
+
+        
+    
+    
+            var marker_bdb9e3f2df3f4b079d1b40b034d16728 = L.marker(
+                [2.7254, 101.936],
+                {}
+            ).addTo(map_4f4409182646facbb809b05f93f6217c);
+        
+    
+            var icon_bcf3e0013e239e550fbabae9481db018 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "cloud", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_bdb9e3f2df3f4b079d1b40b034d16728.setIcon(icon_bcf3e0013e239e550fbabae9481db018);
+        
+    
+        var popup_903005d328d77a29283065a448c75b12 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_0aa15caf383c07dfbc354d5a5749c668 = $(`<div id="html_0aa15caf383c07dfbc354d5a5749c668" style="width: 100.0%; height: 100.0%;"><h4>4</h4><p>Job Growth: 50</p><p>Vacancy Rates: 0.12254901960784313</p></div>`)[0];
+                popup_903005d328d77a29283065a448c75b12.setContent(html_0aa15caf383c07dfbc354d5a5749c668);
+            
+        
+
+        marker_bdb9e3f2df3f4b079d1b40b034d16728.bindPopup(popup_903005d328d77a29283065a448c75b12)
+        ;
+
+        
+    
+    
+            var marker_8af0dfbe0fa5680406a0574750f674f2 = L.marker(
+                [3.4909, 102.4459],
+                {}
+            ).addTo(map_4f4409182646facbb809b05f93f6217c);
+        
+    
+            var icon_ba568623bd7a6f89a24ea7d8996cbc55 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "cloud", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_8af0dfbe0fa5680406a0574750f674f2.setIcon(icon_ba568623bd7a6f89a24ea7d8996cbc55);
+        
+    
+        var popup_c600ed6ed6626dbcbcb3b33b018964e7 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_90a7afdfb264fc1bf6029ca0927a10b5 = $(`<div id="html_90a7afdfb264fc1bf6029ca0927a10b5" style="width: 100.0%; height: 100.0%;"><h4>5</h4><p>Job Growth: 429</p><p>Vacancy Rates: 0.9953596287703016</p></div>`)[0];
+                popup_c600ed6ed6626dbcbcb3b33b018964e7.setContent(html_90a7afdfb264fc1bf6029ca0927a10b5);
+            
+        
+
+        marker_8af0dfbe0fa5680406a0574750f674f2.bindPopup(popup_c600ed6ed6626dbcbcb3b33b018964e7)
+        ;
+
+        
+    
+    
+            var marker_daca3eb01f6ea0d766594bda98bb4dfa = L.marker(
+                [5.3695, 100.5275],
+                {}
+            ).addTo(map_4f4409182646facbb809b05f93f6217c);
+        
+    
+            var icon_bf6c584d3ed13ca330996fd992c60188 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "cloud", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_daca3eb01f6ea0d766594bda98bb4dfa.setIcon(icon_bf6c584d3ed13ca330996fd992c60188);
+        
+    
+        var popup_45dfea4da73b9df96aa818e62b47abd4 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_1a4b9d6ad323879f5ae63dd477a0f29c = $(`<div id="html_1a4b9d6ad323879f5ae63dd477a0f29c" style="width: 100.0%; height: 100.0%;"><h4>6</h4><p>Job Growth: 992</p><p>Vacancy Rates: 0.4500907441016334</p></div>`)[0];
+                popup_45dfea4da73b9df96aa818e62b47abd4.setContent(html_1a4b9d6ad323879f5ae63dd477a0f29c);
+            
+        
+
+        marker_daca3eb01f6ea0d766594bda98bb4dfa.bindPopup(popup_45dfea4da73b9df96aa818e62b47abd4)
+        ;
+
+        
+    
+    
+            var marker_87a83127f34c5dbf2a97469ff91906f5 = L.marker(
+                [4.8414, 100.9957],
+                {}
+            ).addTo(map_4f4409182646facbb809b05f93f6217c);
+        
+    
+            var icon_75035b09b8412ccc6354874de64b26c4 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "cloud", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_87a83127f34c5dbf2a97469ff91906f5.setIcon(icon_75035b09b8412ccc6354874de64b26c4);
+        
+    
+        var popup_4962a5778d00d08895c101f9b03fe999 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_685f670016d299f2e859e4e97223a6bc = $(`<div id="html_685f670016d299f2e859e4e97223a6bc" style="width: 100.0%; height: 100.0%;"><h4>7</h4><p>Job Growth: 711</p><p>Vacancy Rates: 0.9330708661417323</p></div>`)[0];
+                popup_4962a5778d00d08895c101f9b03fe999.setContent(html_685f670016d299f2e859e4e97223a6bc);
+            
+        
+
+        marker_87a83127f34c5dbf2a97469ff91906f5.bindPopup(popup_4962a5778d00d08895c101f9b03fe999)
+        ;
+
+        
+    
+    
+            var marker_b22864e814684f8a67cc00c3b10ba8c6 = L.marker(
+                [6.4552, 100.3705],
+                {}
+            ).addTo(map_4f4409182646facbb809b05f93f6217c);
+        
+    
+            var icon_1ad2803a2498ca6fd5151e293688c9bb = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "cloud", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_b22864e814684f8a67cc00c3b10ba8c6.setIcon(icon_1ad2803a2498ca6fd5151e293688c9bb);
+        
+    
+        var popup_d2a219e6662313da40e56b7de5f50398 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ab1d942d18c1f8608817623d0f9f2fca = $(`<div id="html_ab1d942d18c1f8608817623d0f9f2fca" style="width: 100.0%; height: 100.0%;"><h4>8</h4><p>Job Growth: 65</p><p>Vacancy Rates: 1.2264150943396226</p></div>`)[0];
+                popup_d2a219e6662313da40e56b7de5f50398.setContent(html_ab1d942d18c1f8608817623d0f9f2fca);
+            
+        
+
+        marker_b22864e814684f8a67cc00c3b10ba8c6.bindPopup(popup_d2a219e6662313da40e56b7de5f50398)
+        ;
+
+        
+    
+    
+            var marker_470ecc2fee5a8bd105ac934916626a9a = L.marker(
+                [3.0738, 101.5183],
+                {}
+            ).addTo(map_4f4409182646facbb809b05f93f6217c);
+        
+    
+            var icon_90ca5f5c2e485c58a5fca9a90719c7ae = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "cloud", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_470ecc2fee5a8bd105ac934916626a9a.setIcon(icon_90ca5f5c2e485c58a5fca9a90719c7ae);
+        
+    
+        var popup_c1548937e88e5ec1947cbd0d26ff8402 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_77902d7e57b804069c9ca50a643b2965 = $(`<div id="html_77902d7e57b804069c9ca50a643b2965" style="width: 100.0%; height: 100.0%;"><h4>9</h4><p>Job Growth: 8327</p><p>Vacancy Rates: 0.8637070843273519</p></div>`)[0];
+                popup_c1548937e88e5ec1947cbd0d26ff8402.setContent(html_77902d7e57b804069c9ca50a643b2965);
+            
+        
+
+        marker_470ecc2fee5a8bd105ac934916626a9a.bindPopup(popup_c1548937e88e5ec1947cbd0d26ff8402)
+        ;
+
+        
+    
+    
+            var marker_0e03f8702725d01b7bfc4d2f86a8ac31 = L.marker(
+                [3.0563, 102.2515],
+                {}
+            ).addTo(map_4f4409182646facbb809b05f93f6217c);
+        
+    
+            var icon_b7467a6090dfcfc066f948f870de2b5c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "cloud", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_0e03f8702725d01b7bfc4d2f86a8ac31.setIcon(icon_b7467a6090dfcfc066f948f870de2b5c);
+        
+    
+        var popup_76b97d23e932f24ec6f81b9d8872d16b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_12747628a99703f59762205c8316f687 = $(`<div id="html_12747628a99703f59762205c8316f687" style="width: 100.0%; height: 100.0%;"><h4>10</h4><p>Job Growth: 341</p><p>Vacancy Rates: 0.924119241192412</p></div>`)[0];
+                popup_76b97d23e932f24ec6f81b9d8872d16b.setContent(html_12747628a99703f59762205c8316f687);
+            
+        
+
+        marker_0e03f8702725d01b7bfc4d2f86a8ac31.bindPopup(popup_76b97d23e932f24ec6f81b9d8872d16b)
+        ;
+
+        
+    
+    
+            var marker_ca97c9f97da669596a7cb168d663dd26 = L.marker(
+                [5.96, 116.0735],
+                {}
+            ).addTo(map_4f4409182646facbb809b05f93f6217c);
+        
+    
+            var icon_58928ac74eba811f1f327945b7cd8698 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "cloud", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_ca97c9f97da669596a7cb168d663dd26.setIcon(icon_58928ac74eba811f1f327945b7cd8698);
+        
+    
+        var popup_72ef534fddf006fec3147bdc18275d0e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_400c2c2b19368ae825b553a23859be91 = $(`<div id="html_400c2c2b19368ae825b553a23859be91" style="width: 100.0%; height: 100.0%;"><h4>11</h4><p>Job Growth: 1376</p><p>Vacancy Rates: 1.5154185022026432</p></div>`)[0];
+                popup_72ef534fddf006fec3147bdc18275d0e.setContent(html_400c2c2b19368ae825b553a23859be91);
+            
+        
+
+        marker_ca97c9f97da669596a7cb168d663dd26.bindPopup(popup_72ef534fddf006fec3147bdc18275d0e)
+        ;
+
+        
+    
+    
+            var marker_b8e2f2415235b3d3c3253aebf76433a2 = L.marker(
+                [1.5629, 110.3438],
+                {}
+            ).addTo(map_4f4409182646facbb809b05f93f6217c);
+        
+    
+            var icon_0dadb1dfa53e9af6b795a2ddf3a8f754 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "cloud", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_b8e2f2415235b3d3c3253aebf76433a2.setIcon(icon_0dadb1dfa53e9af6b795a2ddf3a8f754);
+        
+    
+        var popup_cd6a2fbf084cff1a5169a3625bcbf18e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_0f335f89b4d04b26de7819942255ff7a = $(`<div id="html_0f335f89b4d04b26de7819942255ff7a" style="width: 100.0%; height: 100.0%;"><h4>12</h4><p>Job Growth: 1481</p><p>Vacancy Rates: 1.3906103286384977</p></div>`)[0];
+                popup_cd6a2fbf084cff1a5169a3625bcbf18e.setContent(html_0f335f89b4d04b26de7819942255ff7a);
+            
+        
+
+        marker_b8e2f2415235b3d3c3253aebf76433a2.bindPopup(popup_cd6a2fbf084cff1a5169a3625bcbf18e)
+        ;
+
+        
+    
+    
+            var marker_11e44db1d554f95d5e4af88accc272e8 = L.marker(
+                [2.5572, 113.7001],
+                {}
+            ).addTo(map_4f4409182646facbb809b05f93f6217c);
+        
+    
+            var icon_1e28cd76effa8be07e6ad61abdc39d73 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "cloud", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_11e44db1d554f95d5e4af88accc272e8.setIcon(icon_1e28cd76effa8be07e6ad61abdc39d73);
+        
+    
+        var popup_506a008f6c55fa934456ff3200a4f002 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_de8c55ea269237d1a9695977fd14d62c = $(`<div id="html_de8c55ea269237d1a9695977fd14d62c" style="width: 100.0%; height: 100.0%;"><h4>13</h4><p>Job Growth: 17846</p><p>Vacancy Rates: 0.6746049746730173</p></div>`)[0];
+                popup_506a008f6c55fa934456ff3200a4f002.setContent(html_de8c55ea269237d1a9695977fd14d62c);
+            
+        
+
+        marker_11e44db1d554f95d5e4af88accc272e8.bindPopup(popup_506a008f6c55fa934456ff3200a4f002)
+        ;
+
+        
+    
+    
+            var marker_00a6cf4d0f7f43dffcbce3265fc1bb77 = L.marker(
+                [3.139, 101.6869],
+                {}
+            ).addTo(map_4f4409182646facbb809b05f93f6217c);
+        
+    
+            var icon_c2b37f99000bba050f0a09523ee13123 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "cloud", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_00a6cf4d0f7f43dffcbce3265fc1bb77.setIcon(icon_c2b37f99000bba050f0a09523ee13123);
+        
+    
+        var popup_81e864ee683f8b1835b4fce4c181077b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_44fec0e2ccf8cca523735c57f8878632 = $(`<div id="html_44fec0e2ccf8cca523735c57f8878632" style="width: 100.0%; height: 100.0%;"><h4>14</h4><p>Job Growth: 26</p><p>Vacancy Rates: 0.7027027027027027</p></div>`)[0];
+                popup_81e864ee683f8b1835b4fce4c181077b.setContent(html_44fec0e2ccf8cca523735c57f8878632);
+            
+        
+
+        marker_00a6cf4d0f7f43dffcbce3265fc1bb77.bindPopup(popup_81e864ee683f8b1835b4fce4c181077b)
+        ;
+
+        
+    
+    
+            var marker_65fe2d6b538fde8f33f2bb9a0f6a4559 = L.marker(
+                [5.2836, 100.4593],
+                {}
+            ).addTo(map_4f4409182646facbb809b05f93f6217c);
+        
+    
+            var icon_663966979518e314c5d5cf6aeb96f25b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "cloud", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_65fe2d6b538fde8f33f2bb9a0f6a4559.setIcon(icon_663966979518e314c5d5cf6aeb96f25b);
+        
+    
+        var popup_8ad0eae947eb7804ccd8dad153a2a27e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_dadf695098ee2f547c31b9d3445ebe51 = $(`<div id="html_dadf695098ee2f547c31b9d3445ebe51" style="width: 100.0%; height: 100.0%;"><h4>15</h4><p>Job Growth: 146</p><p>Vacancy Rates: 0.5177304964539007</p></div>`)[0];
+                popup_8ad0eae947eb7804ccd8dad153a2a27e.setContent(html_dadf695098ee2f547c31b9d3445ebe51);
+            
+        
+
+        marker_65fe2d6b538fde8f33f2bb9a0f6a4559.bindPopup(popup_8ad0eae947eb7804ccd8dad153a2a27e)
+        ;
+
+        
+    
+</script>
+</html>
