@@ -22,7 +22,7 @@ st.sidebar.caption("A Job Solution Prototype")
 
 # user input
 with st.sidebar:
-    web_toggle = st.toggle('Web Mode')
+    web_toggle = st.toggle('Turn On API')
     location_input = st.text_input(
         "Enter a location (Malaysia Only):", "University Malaya"
     )
