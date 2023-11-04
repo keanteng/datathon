@@ -22,6 +22,7 @@ st.sidebar.caption("A Job Solution Prototype")
 
 # user input
 with st.sidebar:
+    web_toggle = st.toggle('Web Mode')
     location_input = st.text_input(
         "Enter a location (Malaysia Only):", "University Malaya"
     )
@@ -728,7 +729,10 @@ if submit:
 
         with col2:
             # configure the API
-            configure_api()
+            if web_toggle:
+                configure_api(api_key="PALM_TOKEN")
+            else:
+                configure_api(api_key=PALM_TOKEN)
             
             # get the skill list
             skill_list = skill_suggest_model(location_input)
