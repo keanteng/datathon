@@ -732,10 +732,6 @@ if submit:
             except:
                 configure_api()
             
-            try:
-                configure_api()
-            except:
-                configure_api(token_name="PALM_TOKEN")
             # get the skill list
             skill_list = skill_suggest_model(location_input)
             # get the job list
