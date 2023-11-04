@@ -42,7 +42,10 @@ with st.sidebar:
     )
     # add exapander
     with st.expander("Your Job Profile", expanded=False):
-        user_skills = st.text_input("Enter Your Skills, Desired Sector & Qualifications:", "English, Leadership, Problem Solving, Malay, Program Planning")
+        user_skills = st.text_input(
+            "Enter Your Skills, Desired Sector & Qualifications:",
+            "English, Leadership, Problem Solving, Malay, Program Planning",
+        )
         user_qualification = st.selectbox(
             "Enter Your Qualification:",
             (
@@ -54,7 +57,7 @@ with st.sidebar:
                 "6-Bachelor Degree",
                 "7-Master Degree",
                 "8-Doctorate Degree",
-            )
+            ),
         )
         user_sector = st.text_input("Enter Your Desired Sector:", "Teacher")
 
@@ -148,11 +151,11 @@ if submit:
         with col1:
             ## map generation
             input_df = geocoder(location_input)
-            
-            if input_df['Latitude'][0] == None:
+
+            if input_df["Latitude"][0] == None:
                 st.error("Location not found. Please try again.")
                 st.stop()
-            
+
             intersected_df = intersection_check(input_df, df)
 
             m = leafmap.Map(
@@ -239,71 +242,98 @@ if submit:
                 else:
                     job_key = job_match["title"][0]
 
-                    #result = job_recom_engine(jobdata, job_key=job_key)
+                    # result = job_recom_engine(jobdata, job_key=job_key)
                     sig = job_recom_engine(jobdata)
-                    result = (
-                        give_rec(titlename=job_key, sig=sig, jobdata=jobdata)
-                        .sort_values(by="View", ascending=False)
-                    )
+                    result = give_rec(
+                        titlename=job_key, sig=sig, jobdata=jobdata
+                    ).sort_values(by="View", ascending=False)
                     result_df.append(result)
-                    
+
             # if the result is empty we will return empty dataframe
             if len(result_df) == 0:
                 pass
             else:
                 result_df = pd.concat([df for df in result_df], ignore_index=True)
-                
+
             with st.expander("Job Recommendation", expanded=False):
                 st.table(result_df)
-                
+
             # resume recommendation engine
-            qualification_dict = dict(zip(qualification_data["qualification"], qualification_data["mqf level"]))
+            qualification_dict = dict(
+                zip(
+                    qualification_data["qualification"], qualification_data["mqf level"]
+                )
+            )
             matching_sectors = []
-            
+
             for _, row in sectors_data.iterrows():
                 sector = row["sector"]
                 sector_skills = row["skills"]
                 min_qualification = row["qualification"]
                 # compute the similarity score between user skills and all sector skills
                 similarity_score = compare_skills(user_skills, sector_skills)
-                
+
                 # check if the similarity score is above 0 and if the user's qualification is above the minimum qualification level
-                if similarity_score > 0 and int(user_qualification[0:1]) >= int(min_qualification):
+                if similarity_score > 0 and int(user_qualification[0:1]) >= int(
+                    min_qualification
+                ):
                     if not user_sector or user_sector.lower() in sector.lower():
                         matching_sectors.append(sector)
-                        
+
             # output the results
             with st.expander("Job Profile Analysis", expanded=False):
                 if matching_sectors:
                     # the matches sector could be more than one, so we need to loop through all of them
                     for sector in matching_sectors:
-                        sector_row = sectors_data.loc[sectors_data["sector"] == sector].iloc[0]
+                        sector_row = sectors_data.loc[
+                            sectors_data["sector"] == sector
+                        ].iloc[0]
                         required_skills = set(sector_row["skills"].split(","))
                         user_input_skills = set(user_skills.lower().split(","))
-                        matching_skills = user_input_skills.intersection(required_skills)
+                        matching_skills = user_input_skills.intersection(
+                            required_skills
+                        )
                         lacking_skills = required_skills.difference(user_input_skills)
 
                         st.write(f"**Sector:** {sector.title()}")
-                        st.write("**Matching Skills:**", ", ".join(matching_skills).title())
-                        st.write("**Lacking Skills:**", ", ".join(lacking_skills)[2:].title())
-                        st.write(f"**Minimum Qualification:** MQF Level {sector_row['qualification']}")
+                        st.write(
+                            "**Matching Skills:**", ", ".join(matching_skills).title()
+                        )
+                        st.write(
+                            "**Lacking Skills:**", ", ".join(lacking_skills)[2:].title()
+                        )
+                        st.write(
+                            f"**Minimum Qualification:** MQF Level {sector_row['qualification']}"
+                        )
 
-                        course_suggestions = course_suggestions_data.loc[course_suggestions_data['sector'] == sector]
+                        course_suggestions = course_suggestions_data.loc[
+                            course_suggestions_data["sector"] == sector
+                        ]
                         if not course_suggestions.empty:
                             st.write("**Course Suggestions:**")
 
                             for _, suggestion_row in course_suggestions.iterrows():
-                                suggestion_row = pd.DataFrame(suggestion_row).transpose().reset_index(drop=True)
-                                
-                                text1 = str(suggestion_row['course suggestion 1'][0])
+                                suggestion_row = (
+                                    pd.DataFrame(suggestion_row)
+                                    .transpose()
+                                    .reset_index(drop=True)
+                                )
+
+                                text1 = str(suggestion_row["course suggestion 1"][0])
                                 suggestion_link1 = f"<a href='{suggestion_row['link_1'][0]}'>{text1}</a>"
-                                text2 = str(suggestion_row['course suggestion 2'][0])
+                                text2 = str(suggestion_row["course suggestion 2"][0])
                                 suggestion_link2 = f"<a href='{suggestion_row['link_2'][0]}'>{text2}</a>"
-                                text3 = str(suggestion_row['course suggestion 3'][0])
+                                text3 = str(suggestion_row["course suggestion 3"][0])
                                 suggestion_link3 = f"<a href='{suggestion_row['link_3'][0]}'>{text3}</a>"
-                                st.markdown("- " + suggestion_link1, unsafe_allow_html=True)
-                                st.markdown("- " + suggestion_link2, unsafe_allow_html=True)
-                                st.markdown("- " + suggestion_link3, unsafe_allow_html=True)
+                                st.markdown(
+                                    "- " + suggestion_link1, unsafe_allow_html=True
+                                )
+                                st.markdown(
+                                    "- " + suggestion_link2, unsafe_allow_html=True
+                                )
+                                st.markdown(
+                                    "- " + suggestion_link3, unsafe_allow_html=True
+                                )
 
                         if len(lacking_skills) > 0:
                             st.write("**Role & Responsibilities:**")
@@ -313,7 +343,9 @@ if submit:
                         st.divider()
                 # if no match found, output this message
                 else:
-                    st.write("Sorry, no matching sectors found in our database for your skills and qualification level.")
+                    st.write(
+                        "Sorry, no matching sectors found in our database for your skills and qualification level."
+                    )
 
             # regional analysis
             airport_count = []
@@ -464,4 +496,6 @@ if submit:
                     st.table(poi_df)
 
 # sidebar footer
-st.sidebar.caption("MIT License 2023 © Isekai Truck: Ang Zhi Nuo, Connie Hui Kang Yi, Khor Kean Teng, Ling Sing Cheng, Tan Yu Jing")
+st.sidebar.caption(
+    "MIT License 2023 © Isekai Truck: Ang Zhi Nuo, Connie Hui Kang Yi, Khor Kean Teng, Ling Sing Cheng, Tan Yu Jing"
+)
