@@ -732,7 +732,7 @@ if submit:
             palm.configure(api_key= api_input)
 
             try:
-                configure_api(token_name="PALM_TOKEN")
+                configure_api(api_key = PALM_TOKEN)
             except:
                 configure_api()
             
