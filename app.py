@@ -22,7 +22,8 @@ st.sidebar.caption("A Job Solution Prototype")
 
 # user input
 with st.sidebar:
-    web_toggle = st.toggle('Turn On API')
+    web_toggle = st.toggle('Enable API')
+    api_input = st.text_input("Your Google Api", "API_KEY")
     location_input = st.text_input(
         "Enter a location (Malaysia Only):", "University Malaya"
     )
@@ -730,7 +731,7 @@ if submit:
         with col2:
             # configure the API
             if web_toggle:
-                configure_api(api_key="PALM_TOKEN")
+                configure_api(api_key=api_input)
             else:
                 configure_api(api_key=PALM_TOKEN)
             
