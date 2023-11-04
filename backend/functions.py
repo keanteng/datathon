@@ -10,8 +10,14 @@ from backend.config import *
 import re
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import sigmoid_kernel
+from sklearn.metrics.pairwise import cosine_similarity
 import fuzzywuzzy
 from fuzzywuzzy import process
+from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
+from nltk.stem import PorterStemmer
+import nltk
+import re
 
 
 # convert to lat long
@@ -25,22 +31,35 @@ def geocoder(location_input):
     Returns:
         dataframe: a geodataframe with latitude and longitude and geometry
     """
+    
+    try:
+        geolocator = Nominatim(user_agent="my_app")
+        location = geolocator.geocode(location_input)
 
-    geolocator = Nominatim(user_agent="my_app")
-    location = geolocator.geocode(location_input)
-
-    location_df = pd.DataFrame(
-        {
-            "City": location_input,
-            "Latitude": [location.latitude],
-            "Longitude": [location.longitude],
-        }
-    )
-    location_df = gpd.GeoDataFrame(
-        location_df,
-        geometry=gpd.points_from_xy(location_df.Longitude, location_df.Latitude),
-    )
-    return location_df
+        location_df = pd.DataFrame(
+            {
+                "City": location_input,
+                "Latitude": [location.latitude],
+                "Longitude": [location.longitude],
+            }
+        )
+        
+        location_df = gpd.GeoDataFrame(
+            location_df,
+            geometry=gpd.points_from_xy(location_df.Longitude, location_df.Latitude),
+        )
+        
+        return location_df
+        
+    except:
+        location_df = pd.DataFrame(
+            {
+                "City": location_input,
+                "Latitude": [None],
+                "Longitude": [None],
+            }
+        )
+        return location_df
 
 
 # check intersection
@@ -74,6 +93,7 @@ def intersection_check(location_df, df):
 
 # palm model
 # configure API
+@st.cache_resource
 def configure_api():
     """
     Configure the API key for palm model.
@@ -274,13 +294,13 @@ def give_rec(titlename, sig, jobdata):
 
 
 # job recommendation engine workflow
-def job_recom_engine(jobdata, job_key):
+@st.cache_resource
+def job_recom_engine(jobdata):
     """
     Job recommendation engine workflow.
 
     Args:
         jobdata (dataframe): a dataframe, the job posting dataset
-        job_key (string): a string, the job title of your choice
 
     Returns:
         dataframe: a dataframe with the top 5 recommended jobs
@@ -313,13 +333,12 @@ def job_recom_engine(jobdata, job_key):
     # sigmoid kernel
     sig = sigmoid_kernel(tfv_matrix, tfv_matrix)
 
-    recommended_jobs = (
-        give_rec(titlename=job_key, sig=sig, jobdata=jobdata)
-        .sort_values(by="View", ascending=False)
-        .head()
-    )
+    #recommended_jobs = (
+        #give_rec(titlename=job_key, sig=sig, jobdata=jobdata)
+        #.sort_values(by="View", ascending=False)
+    #)
 
-    return recommended_jobs
+    return sig
 
 
 # testing
@@ -357,3 +376,48 @@ def job_matcher(jobdata, column="title", string_to_match=None, min_ratio=85):
 # jobdata = pd.read_csv('data/job_posting_clean.csv')
 # a = job_matcher(jobdata = jobdata, column = 'title', string_to_match = 'financial analyst')
 # print(a['title'][0])
+
+# resume analysis model
+def preprocess_text(text_input):
+    """
+    Preprocess text by removing special characters, stop words, and stemming.
+
+    Args:
+        text_input (string): a string, the text input of your choice
+
+    Returns:
+        string: a string with the special characters, stop words, and stemming removed
+    """
+    tokens = text_input.lower()
+    tokens = word_tokenize(tokens)
+    tokens = [word.lower() for word in tokens if word.isalnum()]
+    
+    # remove stop words
+    stop_words = set(stopwords.words("english"))
+    tokens = [word for word in tokens if not word in stop_words]
+    stemmer = PorterStemmer()
+    tokens = [stemmer.stem(word) for word in tokens]
+    
+    return " ".join(tokens)
+
+def compare_skills(user_skills, sector_skills):
+    """
+    Compare skills between user and sector.
+
+    Args:
+        user_skills (string): a string, the user skills input of your choice
+        sector_skills (string): a string, the sector skills input of your choice
+
+    Returns:
+        numeric: a numeric value, the cosine similarity between the user and sector skills
+    """
+    # preprocess text
+    user_skills = preprocess_text(user_skills)
+    sector_skills = preprocess_text(sector_skills)
+
+    # vectorize text and calculate cosine similarity
+    vectorizer = TfidfVectorizer(stop_words="english", analyzer="word")
+    tfidf_matrix = vectorizer.fit_transform([user_skills, sector_skills])
+    cosine_sim = cosine_similarity(tfidf_matrix[0], tfidf_matrix[1])
+
+    return cosine_sim[0][0]

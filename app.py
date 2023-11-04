@@ -12,12 +12,12 @@ st.set_page_config(layout="wide", initial_sidebar_state="auto")
 
 ## customize the side bar
 st.sidebar.title("🌍 Geo-Sustainable Jobs Solution")
-st.sidebar.caption("A Solution Prototype")
+st.sidebar.caption("A Job Solution Prototype")
 
 # user input
 with st.sidebar:
     location_input = st.text_input(
-        "Enter a location of interest:", "Kuala Lumpur Sentral"
+        "Enter a location (Malaysia Only):", "University Malaya"
     )
     state_input = st.selectbox(
         "Select a state:",
@@ -40,8 +40,27 @@ with st.sidebar:
             "W.P Putrajaya",
         ],
     )
+    # add exapander
+    with st.expander("Your Job Profile", expanded=False):
+        user_skills = st.text_input("Enter Your Skills, Desired Sector & Qualifications:", "English, Leadership, Problem Solving, Malay, Program Planning")
+        user_qualification = st.selectbox(
+            "Enter Your Qualification:",
+            (
+                "1-Skill Certificate 1",
+                "2-Skill Certificate 2",
+                "3-Skill Certificate 3",
+                "4-Diploma",
+                "5-Advanced Diploma",
+                "6-Bachelor Degree",
+                "7-Master Degree",
+                "8-Doctorate Degree",
+            )
+        )
+        user_sector = st.text_input("Enter Your Desired Sector:", "Teacher")
+
     submit = st.button("Compute", type="primary")
     st.subheader("📈 OpenDOSM Statistics")
+    st.caption("Source: Labour Market Review, 2023 Q2")
 
 # setup the layout with columns
 col1, col2 = st.columns(spec=[0.7, 0.3], gap="small")
@@ -65,6 +84,8 @@ point_of_interest = gpd.read_file(
     "data/point_of_interest/hotosm_mys_points_of_interest_polygons.shp"
 )
 seaports = gpd.read_file("data/sea_ports/hotosm_mys_sea_ports_polygons.shp")
+qualification_data = pd.read_excel("data/qualification level.xlsx")
+sectors_data = pd.read_excel("data/skill by sector.xlsx")
 
 # configure geodataframe
 airports = gpd.GeoDataFrame(airports, geometry=airports.geometry, crs="EPSG:4326")
@@ -122,10 +143,15 @@ if state_input:
 if submit:
     # clear the map
     placeholder.empty()
-    with st.spinner():
+    with st.spinner("Hang on for a second..."):
         with col1:
             ## map generation
             input_df = geocoder(location_input)
+            
+            if input_df['Latitude'][0] == None:
+                st.error("Location not found. Please try again.")
+                st.stop()
+            
             intersected_df = intersection_check(input_df, df)
 
             m = leafmap.Map(
@@ -212,12 +238,64 @@ if submit:
                 else:
                     job_key = job_match["title"][0]
 
-                    result = job_recom_engine(jobdata, job_key=job_key)
+                    #result = job_recom_engine(jobdata, job_key=job_key)
+                    sig = job_recom_engine(jobdata)
+                    result = (
+                        give_rec(titlename=job_key, sig=sig, jobdata=jobdata)
+                        .sort_values(by="View", ascending=False)
+                    )
                     result_df.append(result)
-
-            result_df = pd.concat([df for df in result_df], ignore_index=True)
+                    
+            # if the result is empty we will return empty dataframe
+            if len(result_df) == 0:
+                pass
+            else:
+                result_df = pd.concat([df for df in result_df], ignore_index=True)
+                
             with st.expander("Job Recommendation", expanded=False):
                 st.table(result_df)
+                
+            # resume recommendation engine
+            qualification_dict = dict(zip(qualification_data["qualification"], qualification_data["mqf level"]))
+            matching_sectors = []
+            
+            for _, row in sectors_data.iterrows():
+                sector = row["sector"]
+                sector_skills = row["skills"]
+                min_qualification = row["qualification"]
+                # compute the similarity score between user skills and all sector skills
+                similarity_score = compare_skills(user_skills, sector_skills)
+                
+                # check if the similarity score is above 0 and if the user's qualification is above the minimum qualification level
+                if similarity_score > 0 and int(user_qualification[0:1]) >= int(min_qualification):
+                    if not user_sector or user_sector.lower() in sector.lower():
+                        matching_sectors.append(sector)
+                        
+            # output the results
+            with st.expander("Job Profile Analysis", expanded=False):
+                if matching_sectors:
+                    # the matches sector could be more than one, so we need to loop through all of them
+                    for sector in matching_sectors:
+                        sector_row = sectors_data.loc[sectors_data["sector"] == sector].iloc[0]
+                        required_skills = set(sector_row["skills"].split(","))
+                        user_input_skills = set(user_skills.lower().split(","))
+                        matching_skills = user_input_skills.intersection(required_skills)
+                        lacking_skills = required_skills.difference(user_input_skills)
+
+                        st.write(f"**Sector:** {sector.title()}")
+                        st.write("**Matching Skills:**", ", ".join(matching_skills).title())
+                        st.write("**Lacking Skills:**", ", ".join(lacking_skills)[2:].title())
+                        st.write(f"**Minimum Qualification:** MQF Level {sector_row['qualification']}")
+                        st.write("**Role & Responsibilities**")
+
+                        if len(lacking_skills) > 0:
+                            job_description = sector_row["job description"].split(";")
+                            for desc in job_description:
+                                st.write(desc.strip())
+                        st.divider()
+                # if no match found, output this message
+                else:
+                    st.write("Sorry, no matching sectors found in our database for your skills and qualification level.")
 
             # regional analysis
             airport_count = []
@@ -366,3 +444,6 @@ if submit:
                 st.subheader("📍 Location Analysis")
                 with st.expander("Point of Interest", expanded=False):
                     st.table(poi_df)
+
+# sidebar footer
+st.sidebar.caption("MIT License 2023 © Isekai Truck: Ang Zhi Nuo, Connie Hui Kang Yi, Khor Kean Teng, Ling Sing Cheng, Tan Yu Jing")
