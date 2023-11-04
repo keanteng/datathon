@@ -6,7 +6,7 @@ shapely
 geopy
 google-generativeai
 scipy
-sklearn
+scikit-learn
 re
 fuzzywuzzy
 sklearn
