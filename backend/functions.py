@@ -19,6 +19,16 @@ from nltk.stem import PorterStemmer
 import nltk
 import re
 
+# forecasting
+from datetime import *
+from statsmodels.tsa.holtwinters import ExponentialSmoothing
+import matplotlib.pyplot as ax1
+from statsmodels.tsa.holtwinters import SimpleExpSmoothing
+from statsmodels.tsa.stattools import adfuller
+from pmdarima import auto_arima
+from sklearn.metrics import mean_squared_error, mean_absolute_error
+import matplotlib.pyplot as plt
+
 
 # convert to lat long
 def geocoder(location_input):
@@ -31,7 +41,7 @@ def geocoder(location_input):
     Returns:
         dataframe: a geodataframe with latitude and longitude and geometry
     """
-    
+
     try:
         geolocator = Nominatim(user_agent="my_app")
         location = geolocator.geocode(location_input)
@@ -43,14 +53,14 @@ def geocoder(location_input):
                 "Longitude": [location.longitude],
             }
         )
-        
+
         location_df = gpd.GeoDataFrame(
             location_df,
             geometry=gpd.points_from_xy(location_df.Longitude, location_df.Latitude),
         )
-        
+
         return location_df
-        
+
     except:
         location_df = pd.DataFrame(
             {
@@ -333,10 +343,10 @@ def job_recom_engine(jobdata):
     # sigmoid kernel
     sig = sigmoid_kernel(tfv_matrix, tfv_matrix)
 
-    #recommended_jobs = (
-        #give_rec(titlename=job_key, sig=sig, jobdata=jobdata)
-        #.sort_values(by="View", ascending=False)
-    #)
+    # recommended_jobs = (
+    # give_rec(titlename=job_key, sig=sig, jobdata=jobdata)
+    # .sort_values(by="View", ascending=False)
+    # )
 
     return sig
 
@@ -377,6 +387,7 @@ def job_matcher(jobdata, column="title", string_to_match=None, min_ratio=85):
 # a = job_matcher(jobdata = jobdata, column = 'title', string_to_match = 'financial analyst')
 # print(a['title'][0])
 
+
 # resume analysis model
 def preprocess_text(text_input):
     """
@@ -391,14 +402,15 @@ def preprocess_text(text_input):
     tokens = text_input.lower()
     tokens = word_tokenize(tokens)
     tokens = [word.lower() for word in tokens if word.isalnum()]
-    
+
     # remove stop words
     stop_words = set(stopwords.words("english"))
     tokens = [word for word in tokens if not word in stop_words]
     stemmer = PorterStemmer()
     tokens = [stemmer.stem(word) for word in tokens]
-    
+
     return " ".join(tokens)
+
 
 def compare_skills(user_skills, sector_skills):
     """
@@ -421,3 +433,52 @@ def compare_skills(user_skills, sector_skills):
     cosine_sim = cosine_similarity(tfidf_matrix[0], tfidf_matrix[1])
 
     return cosine_sim[0][0]
+
+
+# forecasting model
+def ets_fore_a(data, i):
+    # ets test
+    ets_model = ExponentialSmoothing(
+        data, trend="add", seasonal="add", seasonal_periods=i
+    )
+    ets_model_fit = ets_model.fit()
+    ets_pred = ets_model_fit.forecast(8)
+    return ets_pred
+
+
+def ets_fore_b(data, i):
+    # ets test
+    ets_model = ExponentialSmoothing(
+        data, trend="add", seasonal="mul", seasonal_periods=i
+    )
+    ets_model_fit = ets_model.fit()
+    ets_pred = ets_model_fit.forecast(8)
+    return ets_pred
+
+
+def ets_fore_c(data, i):
+    # ets test
+    ets_model = ExponentialSmoothing(
+        data, trend="mul", seasonal="add", seasonal_periods=i
+    )
+    ets_model_fit = ets_model.fit()
+    ets_pred = ets_model_fit.forecast(8)
+    return ets_pred
+
+
+def ets_fore_d(data, i):
+    # ets test
+    ets_model = ExponentialSmoothing(
+        data, trend="mul", seasonal="mul", seasonal_periods=i
+    )
+    ets_model_fit = ets_model.fit()
+    ets_pred = ets_model_fit.forecast(8)
+    return ets_pred
+
+
+def ARIMA_fore(data):
+    # arima test
+    stepwise_model = auto_arima(data, start_p=1, start_q=1, stepwise=True)
+    stepwise_model.fit(data)
+    arima_pred = stepwise_model.predict(n_periods=8)
+    return arima_pred
