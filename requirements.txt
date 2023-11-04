@@ -13,6 +13,6 @@ sklearn
 datetime
 sklearn
 nltk
-statsmodel
+statsmodels
 matplotlib
 pmdarima
