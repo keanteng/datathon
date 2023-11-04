@@ -22,6 +22,7 @@ st.sidebar.caption("A Job Solution Prototype")
 
 # user input
 with st.sidebar:
+    api_input = st.text_input("Enter Google API Key:", "Your API Key Here")
     location_input = st.text_input(
         "Enter a location (Malaysia Only):", "University Malaya"
     )
@@ -728,10 +729,8 @@ if submit:
 
         with col2:
             # configure the API
-            try:
-                palm.configure(api_key="PALM_TOKEN")
-            except:
-                pass
+            palm.configure(api_key= api_input)
+
             try:
                 configure_api(token_name="PALM_TOKEN")
             except:
