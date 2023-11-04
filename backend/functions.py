@@ -6,7 +6,10 @@ from geopy.geocoders import Nominatim
 import leafmap.foliumap as leafmap
 from shapely.geometry import Polygon, MultiPolygon
 import google.generativeai as palm
-from backend.config import *
+try:
+    from backend.config import *
+except:
+    pass
 import re
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import sigmoid_kernel
@@ -104,11 +107,14 @@ def intersection_check(location_df, df):
 # palm model
 # configure API
 @st.cache_resource
-def configure_api():
+def configure_api(token_name = "PALM_TOKEN"):
     """
     Configure the API key for palm model.
     """
-    palm.configure(api_key=params["PALM_TOKEN"])
+    try:
+        palm.configure(api_key=params["PALM_TOKEN"])
+    except:
+        palm.configure(api_key=token_name)
 
 
 # generate palm model
