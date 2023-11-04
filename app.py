@@ -729,12 +729,7 @@ if submit:
 
         with col2:
             # configure the API
-            palm.configure(api_key= api_input)
-
-            try:
-                configure_api(api_key = PALM_TOKEN)
-            except:
-                configure_api()
+            configure_api()
             
             # get the skill list
             skill_list = skill_suggest_model(location_input)
