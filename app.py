@@ -86,6 +86,7 @@ point_of_interest = gpd.read_file(
 seaports = gpd.read_file("data/sea_ports/hotosm_mys_sea_ports_polygons.shp")
 qualification_data = pd.read_excel("data/qualification level.xlsx")
 sectors_data = pd.read_excel("data/skill by sector.xlsx")
+course_suggestions_data = pd.read_excel("data/course suggestion.xlsx")
 
 # configure geodataframe
 airports = gpd.GeoDataFrame(airports, geometry=airports.geometry, crs="EPSG:4326")
@@ -287,6 +288,23 @@ if submit:
                         st.write("**Lacking Skills:**", ", ".join(lacking_skills)[2:].title())
                         st.write(f"**Minimum Qualification:** MQF Level {sector_row['qualification']}")
                         st.write("**Role & Responsibilities**")
+
+                        course_suggestions = course_suggestions_data.loc[course_suggestions_data['sector'] == sector]
+                        if not course_suggestions.empty:
+                            st.write("**Course Suggestions:**")
+
+                            for _, suggestion_row in course_suggestions.iterrows():
+                                suggestion_row = pd.DataFrame(suggestion_row).transpose().reset_index(drop=True)
+                                
+                                text1 = str(suggestion_row['course suggestion 1'][0])
+                                suggestion_link1 = f"<a href='{suggestion_row['link_1'][0]}'>{text1}</a>"
+                                text2 = str(suggestion_row['course suggestion 2'][0])
+                                suggestion_link2 = f"<a href='{suggestion_row['link_2'][0]}'>{text2}</a>"
+                                text3 = str(suggestion_row['course suggestion 3'][0])
+                                suggestion_link3 = f"<a href='{suggestion_row['link_3'][0]}'>{text3}</a>"
+                                st.markdown("- " + suggestion_link1, unsafe_allow_html=True)
+                                st.markdown("- " + suggestion_link2, unsafe_allow_html=True)
+                                st.markdown("- " + suggestion_link3, unsafe_allow_html=True)
 
                         if len(lacking_skills) > 0:
                             job_description = sector_row["job description"].split(";")
