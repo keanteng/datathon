@@ -8,7 +8,7 @@ from shapely.geometry import Polygon, MultiPolygon
 import google.generativeai as palm
 try:
     from backend.config import *
-except:
+except ImportError:
     pass
 import re
 from sklearn.feature_extraction.text import TfidfVectorizer
