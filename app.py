@@ -22,9 +22,12 @@ st.sidebar.caption("A Job Solution Prototype")
 
 # user input
 with st.sidebar:
-    web_toggle = st.toggle('Enable API')
-    st.caption("You MUST enable API and input your own API key")
-    api_input = st.text_input("Your Google API", "API_KEY")
+    with st.expander("PaLM-2 API Configuration", expanded=True):
+        st.caption("You must enable API and input your own API key when using Streamlit web")
+        web_toggle = st.toggle('Enable API')
+        api_input = st.text_input("Your Google API", "API_KEY")
+        st.caption("You can get your API key from https://developers.generativeai.google/")
+        
     location_input = st.text_input(
         "Enter a location (Malaysia Only):", "University Malaya"
     )
