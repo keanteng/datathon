@@ -22,7 +22,6 @@ st.sidebar.caption("A Job Solution Prototype")
 
 # user input
 with st.sidebar:
-    api_input = st.text_input("Enter Google API Key:", "Your API Key Here")
     location_input = st.text_input(
         "Enter a location (Malaysia Only):", "University Malaya"
     )

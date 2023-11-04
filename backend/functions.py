@@ -108,7 +108,7 @@ def intersection_check(location_df, df):
 # palm model
 # configure API
 @st.cache_resource
-def configure_api(api_key):
+def configure_api():
     """
     Configure the API key for palm model.
     """
