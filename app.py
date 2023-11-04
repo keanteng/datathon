@@ -5,11 +5,12 @@ import streamlit as st
 import geopandas as gpd
 from backend.functions import *
 try:
-    from backend.config import *
+    from backend.configs import *
 except ImportError:
     pass
 import matplotlib.pyplot as plt
 from datetime import *
+import google.generativeai as palm
 
 # website settings
 # turn off the side bar by default
@@ -727,6 +728,10 @@ if submit:
 
         with col2:
             # configure the API
+            try:
+                palm.configure(api_key="PALM_TOKEN")
+            except:
+                pass
             try:
                 configure_api(token_name="PALM_TOKEN")
             except:

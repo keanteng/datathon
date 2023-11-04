@@ -7,7 +7,7 @@ import leafmap.foliumap as leafmap
 from shapely.geometry import Polygon, MultiPolygon
 import google.generativeai as palm
 try:
-    from backend.config import *
+    from backend.configs import *
 except ImportError:
     pass
 import re
@@ -20,6 +20,8 @@ from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
 import nltk
+nltk.download("punkt")
+nltk.download("stopwords")
 
 # forecasting
 from datetime import *
