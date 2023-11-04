@@ -7,7 +7,7 @@ geopy
 google-generativeai
 scipy
 scikit-learn
-re
+regex
 fuzzywuzzy
 sklearn
 datetime
