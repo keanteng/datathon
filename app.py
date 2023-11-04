@@ -287,7 +287,6 @@ if submit:
                         st.write("**Matching Skills:**", ", ".join(matching_skills).title())
                         st.write("**Lacking Skills:**", ", ".join(lacking_skills)[2:].title())
                         st.write(f"**Minimum Qualification:** MQF Level {sector_row['qualification']}")
-                        st.write("**Role & Responsibilities**")
 
                         course_suggestions = course_suggestions_data.loc[course_suggestions_data['sector'] == sector]
                         if not course_suggestions.empty:
@@ -307,6 +306,7 @@ if submit:
                                 st.markdown("- " + suggestion_link3, unsafe_allow_html=True)
 
                         if len(lacking_skills) > 0:
+                            st.write("**Role & Responsibilities:**")
                             job_description = sector_row["job description"].split(";")
                             for desc in job_description:
                                 st.write(desc.strip())
