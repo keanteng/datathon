@@ -4,7 +4,10 @@ import numpy as np
 import streamlit as st
 import geopandas as gpd
 from backend.functions import *
-from backend.config import *
+try:
+    from backend.config import *
+except ImportError:
+    pass
 import matplotlib.pyplot as plt
 from datetime import *
 
