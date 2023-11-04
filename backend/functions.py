@@ -113,7 +113,7 @@ def configure_api(token_name = "PALM_TOKEN"):
     try:
         palm.configure(api_key=params["PALM_TOKEN"])
     except:
-        palm.configure(api_key=token_name)
+        palm.configure(api_key="PALM_TOKEN")
 
 
 # generate palm model
