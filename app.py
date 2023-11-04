@@ -23,7 +23,8 @@ st.sidebar.caption("A Job Solution Prototype")
 # user input
 with st.sidebar:
     web_toggle = st.toggle('Enable API')
-    api_input = st.text_input("Your Google Api", "API_KEY")
+    st.caption("You MUST enable API and input your own API key")
+    api_input = st.text_input("Your Google API", "API_KEY")
     location_input = st.text_input(
         "Enter a location (Malaysia Only):", "University Malaya"
     )
