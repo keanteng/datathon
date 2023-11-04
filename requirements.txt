@@ -9,7 +9,6 @@ scipy
 scikit-learn
 regex
 fuzzywuzzy
-sklearn
 datetime
 nltk
 statsmodels
