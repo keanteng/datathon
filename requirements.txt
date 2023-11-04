@@ -16,3 +16,4 @@ nltk
 statsmodels
 matplotlib
 pmdarima
+openpyxl
