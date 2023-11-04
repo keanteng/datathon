@@ -728,6 +728,11 @@ if submit:
         with col2:
             # configure the API
             try:
+                configure_api(token_name="PALM_TOKEN")
+            except:
+                configure_api()
+            
+            try:
                 configure_api()
             except:
                 configure_api(token_name="PALM_TOKEN")
