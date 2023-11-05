@@ -50,7 +50,7 @@ with st.sidebar:
     with st.expander("PaLM-2 API Configuration", expanded=True):
         st.caption(":red[You must enable API and input your own API key when using Streamlit web]")
         web_toggle = st.toggle('Enable API')
-        api_input = st.text_input("Your Google API", "API_KEY")
+        api_input = st.text_input("Your Google API Token", type = "password", placeholder="Enter your API key here")
         st.caption("You can get your API key from https://developers.generativeai.google/")
         
     location_input = st.text_input(
