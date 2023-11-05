@@ -1,4 +1,8 @@
+# hide file containing API keys
 analysis/palm.ipynb
+
+# large file requiring LFS
 #data/job_posting_cleaned.csv
 #data/job_postings.csv
+
 backend/configs.py
